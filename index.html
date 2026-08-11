@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Muhammad Taha Jaffar — UI/UX Designer & Developer</title>
@@ -475,15 +476,15 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
     </div>
     <div class="hero-stats">
       <div class="hstat">
-        <div class="hstat-num">4</div>
+        <div class="hstat-num" id="statProjects" data-count="6">0</div>
         <div class="hstat-label">Projects</div>
       </div>
       <div class="hstat">
-        <div class="hstat-num">3.32</div>
+        <div class="hstat-num" id="statCgpa" data-count="3.32">0</div>
         <div class="hstat-label">CGPA</div>
       </div>
       <div class="hstat">
-        <div class="hstat-num">94</div>
+        <div class="hstat-num" id="statFigma" data-count="94">0</div>
         <div class="hstat-label">Figma Screens</div>
       </div>
     </div>
@@ -796,6 +797,41 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
 
+    <div class="project-section-header reveal">
+      <div class="project-section-num">06</div>
+      <div class="project-section-line"></div>
+      <div class="project-section-title">Data · Market Intelligence</div>
+    </div>
+    <div class="project-card reveal" style="border-top-color:rgba(232,74,74,0.5) !important">
+      <div class="project-card-inner">
+        <div style="padding:40px 36px">
+          <div class="project-num" style="color:#e84a4a">06 / Market Intelligence</div>
+          <h3 class="project-title">Pak<em style="color:#e84a4a">Auto</em></h3>
+          <div class="project-tagline">Pakistan car market intelligence — real prices, real data</div>
+          <p class="project-desc">Real prices. Real data. Real Pakistan. PakAuto tracks used car values, fuel prices, and market trends across every major city — no guesswork, just numbers. Live market stats, top-selling car rankings, daily fuel prices, and a city-by-city breakdown of where Pakistan buys, all animated with anime.js and CountUp.js.</p>
+          <div class="tech-tags" style="margin-bottom:20px">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Vanilla JS</span>
+            <span class="tech-tag">anime.js</span>
+            <span class="tech-tag">CountUp.js</span>
+          </div>
+          <div class="project-links">
+            <a href="https://pakauto.vercel.app/" target="_blank" class="project-link primary" style="background:#e84a4a;color:#fff">🔗 Live Demo</a>
+          </div>
+        </div>
+        <div class="project-preview-wrap" style="background:#0a0808">
+          <div class="preview-browser-bar">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <div class="preview-url"><span class="preview-url-text">pakauto.vercel.app</span></div>
+          </div>
+          <div class="preview-frame">
+            <iframe src="https://pakauto.vercel.app/" title="PakAuto Preview" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -930,6 +966,28 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
 </footer>
 
 <script>
+// ── HERO ENTRANCE (anime.js) ──
+anime.timeline({easing:'easeOutExpo'})
+  .add({targets:'.hero-kicker',opacity:[0,1],translateY:[-16,0],duration:600})
+  .add({targets:'.hero-role-tags .role-tag, .hero-role-tags .role-divider',opacity:[0,1],translateY:[16,0],duration:600,delay:anime.stagger(80)},'-=400')
+  .add({targets:'.hero-h1 .line1, .hero-h1 .line2',opacity:[0,1],translateY:[24,0],duration:700,delay:anime.stagger(120)},'-=400')
+  .add({targets:'.hero-sub',opacity:[0,1],translateY:[16,0],duration:600},'-=400')
+  .add({targets:'.hero-actions a, .hero-actions button',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=350')
+  .add({targets:'.hstat',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=300')
+  .add({targets:'.hero-img-wrap',opacity:[0,1],scale:[0.92,1],duration:800},'-=900')
+  .add({targets:'.hero-floating-tag',opacity:[0,1],translateY:[10,0],duration:500,delay:anime.stagger(150)},'-=400');
+
+// ── STAT COUNT-UP (anime.js number tween) ──
+document.querySelectorAll('.hstat-num[data-count]').forEach(el=>{
+  const end=parseFloat(el.getAttribute('data-count'));
+  const decimals=(el.getAttribute('data-count').split('.')[1]||'').length;
+  const obj={val:0};
+  anime({
+    targets:obj,val:end,duration:1600,round:decimals?false:1,easing:'easeOutExpo',delay:900,
+    update:()=>{el.textContent=decimals?obj.val.toFixed(decimals):Math.round(obj.val);}
+  });
+});
+
 // ── 3D CARD TILT ──
 const heroCard = document.getElementById('heroImgCard');
 const heroWrap = document.getElementById('heroImgWrap');
@@ -1087,7 +1145,12 @@ const PROJECTS={
     desc:"PakHire solves a real problem: Pakistani tech grads have zero visibility into actual salaries, in-demand skills, and where companies are hiring. Built a full market intelligence dashboard with skill demand radar, PKR salary ranges from 1,200+ verified offers, city hiring heatmaps, live job feed, and community testimonials. The platform helps engineers, designers, and grads navigate Pakistan's tech ecosystem with real data — not guesswork.",
     tech:["HTML5","CSS3","Vanilla JS","anime.js","Chart.js","CountUp.js","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://pakhiredashboard-html.vercel.app/",primary:true,color:"#3b82f6"}],
-    features:["Pakistan job market intelligence — skill demand, salaries, city rankings","PKR salary ranges from 1,200+ verified job offers","Skill demand radar — 2024 vs 2023 YoY growth","City hiring heatmap across Karachi, Lahore, Islamabad, Multan","Live job feed with role/remote/hybrid filters","Animated counters and data visualizations with anime.js + Chart.js"]}
+    features:["Pakistan job market intelligence — skill demand, salaries, city rankings","PKR salary ranges from 1,200+ verified job offers","Skill demand radar — 2024 vs 2023 YoY growth","City hiring heatmap across Karachi, Lahore, Islamabad, Multan","Live job feed with role/remote/hybrid filters","Animated counters and data visualizations with anime.js + Chart.js"]},
+  pakauto:{num:"06 / Market Intelligence",title:"PakAuto",tagline:"Pakistan car market intelligence — real prices, real data",color:"#e84a4a",
+    desc:"Real prices. Real data. Real Pakistan. PakAuto tracks used car values, fuel prices, and market trends across every major city — no guesswork, just numbers. Built as a live market intelligence dashboard: current market stats, top-selling car rankings with pricing, daily fuel prices, and a city-by-city breakdown of where Pakistan buys — all wrapped in animated counters and moving UI powered by anime.js and CountUp.js.",
+    tech:["HTML5","CSS3","Vanilla JS","anime.js","CountUp.js","Vercel"],
+    links:[{label:"🔗 Live Demo",href:"https://pakauto.vercel.app/",primary:true,color:"#e84a4a"}],
+    features:["Live Pakistan auto market stats","Top-selling cars with pricing data","Daily fuel price tracker","City-by-city buying trends across Pakistan","Animated counters and moving UI with anime.js + CountUp.js"]}
 };
 
 function openModal(key){
@@ -1120,7 +1183,7 @@ function closeModal(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 // Add click handlers to project cards
-const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire'];
+const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto'];
 document.querySelectorAll('.project-card').forEach((card,i)=>{
   if(!keys[i])return;
   const hint=document.createElement('div');
