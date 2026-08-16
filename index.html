@@ -476,7 +476,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
     </div>
     <div class="hero-stats">
       <div class="hstat">
-        <div class="hstat-num" id="statProjects" data-count="6">0</div>
+        <div class="hstat-num" id="statProjects" data-count="7">0</div>
         <div class="hstat-label">Projects</div>
       </div>
       <div class="hstat">
@@ -797,7 +797,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
 
-    <div class="project-section-header reveal">
+    <div class="project-section-divider reveal">
       <div class="project-section-num">06</div>
       <div class="project-section-line"></div>
       <div class="project-section-title">Data · Market Intelligence</div>
@@ -827,6 +827,41 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
           </div>
           <div class="preview-frame">
             <iframe src="https://pakauto.vercel.app/" title="PakAuto Preview" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section-divider reveal">
+      <div class="project-section-num">07</div>
+      <div class="project-section-line"></div>
+      <div class="project-section-title">AI · Customer Support</div>
+    </div>
+    <div class="project-card reveal" style="border-top-color:rgba(139,92,246,0.5) !important">
+      <div class="project-card-inner">
+        <div style="padding:40px 36px">
+          <div class="project-num" style="color:#8b5cf6">07 / AI · Customer Support</div>
+          <h3 class="project-title">Support<em style="color:#8b5cf6">Agent</em></h3>
+          <div class="project-tagline">Claude-powered AI support agent for e-commerce brands</div>
+          <p class="project-desc">A live, working AI support agent — not a mockup. Built for "Noor Studio," a fictional e-commerce brand, it answers real customer questions about sizing, shipping, COD, and returns using a loaded knowledge base and a live activity log, powered by the real Claude API. Designed to show how a custom support agent could replace a 24/7 human support queue for a Pakistani online store.</p>
+          <div class="tech-tags" style="margin-bottom:20px">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Vanilla JS</span>
+            <span class="tech-tag">Claude API</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://supportagent-theta.vercel.app/" target="_blank" class="project-link primary" style="background:#8b5cf6;color:#fff">🔗 Live Demo</a>
+          </div>
+        </div>
+        <div class="project-preview-wrap" style="background:#0a0912">
+          <div class="preview-browser-bar">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <div class="preview-url"><span class="preview-url-text">supportagent-theta.vercel.app</span></div>
+          </div>
+          <div class="preview-frame">
+            <iframe src="https://supportagent-theta.vercel.app/" title="SupportAgent Preview" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -1150,7 +1185,12 @@ const PROJECTS={
     desc:"Real prices. Real data. Real Pakistan. PakAuto tracks used car values, fuel prices, and market trends across every major city — no guesswork, just numbers. Built as a live market intelligence dashboard: current market stats, top-selling car rankings with pricing, daily fuel prices, and a city-by-city breakdown of where Pakistan buys — all wrapped in animated counters and moving UI powered by anime.js and CountUp.js.",
     tech:["HTML5","CSS3","Vanilla JS","anime.js","CountUp.js","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://pakauto.vercel.app/",primary:true,color:"#e84a4a"}],
-    features:["Live Pakistan auto market stats","Top-selling cars with pricing data","Daily fuel price tracker","City-by-city buying trends across Pakistan","Animated counters and moving UI with anime.js + CountUp.js"]}
+    features:["Live Pakistan auto market stats","Top-selling cars with pricing data","Daily fuel price tracker","City-by-city buying trends across Pakistan","Animated counters and moving UI with anime.js + CountUp.js"]},
+  supportagent:{num:"07 / AI · Customer Support",title:"SupportAgent",tagline:"Claude-powered AI support agent for e-commerce brands",color:"#8b5cf6",
+    desc:"A live, working AI support agent for a fictional e-commerce brand, Noor Studio. It handles real customer questions about sizing, shipping, COD, and returns using a loaded knowledge base, a live activity log sidebar, and quick-reply prompts — all powered by the real Claude API, not scripted responses. Built to demonstrate how a custom support agent could replace a 24/7 human support queue for a Pakistani online store.",
+    tech:["HTML5","CSS3","Vanilla JS","Claude API","Vercel"],
+    links:[{label:"🔗 Live Demo",href:"https://supportagent-theta.vercel.app/",primary:true,color:"#8b5cf6"}],
+    features:["Powered by the live Claude API — real AI replies, not scripted","Loaded knowledge base: sizing, shipping/COD, returns, order tracking","Live activity log showing agent's reasoning steps","Quick-reply prompts for common customer questions","Reset-chat flow for demoing multiple conversations"]}
 };
 
 function openModal(key){
@@ -1183,7 +1223,7 @@ function closeModal(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 // Add click handlers to project cards
-const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto'];
+const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto','supportagent'];
 document.querySelectorAll('.project-card').forEach((card,i)=>{
   if(!keys[i])return;
   const hint=document.createElement('div');
