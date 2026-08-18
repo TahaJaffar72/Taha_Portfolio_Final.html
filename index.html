@@ -867,6 +867,36 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
 
+    <div class="project-card reveal" style="border-top-color:rgba(16,185,129,0.5) !important">
+      <div class="project-card-inner reverse">
+        <div style="padding:40px 36px">
+          <div class="project-num" style="color:#10b981">08 / AI · Business Automation</div>
+          <h3 class="project-title">AI <em style="color:#10b981">Reception</em></h3>
+          <div class="project-tagline">Claude-powered AI receptionist for local businesses</div>
+          <p class="project-desc">A live, working AI receptionist built for small businesses — demoed on a fictional dental clinic, "Al-Noor Dental Clinic." It answers real customer questions about timing, pricing, and booking instantly, using a loaded business knowledge base powered by the real Claude API. Built as a productized service — the business config swaps in minutes to fit any local business: clinics, salons, restaurants, tuition centers.</p>
+          <div class="tech-tags" style="margin-bottom:20px">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Vanilla JS</span>
+            <span class="tech-tag">Claude API</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://ai-reception-seven.vercel.app/" target="_blank" class="project-link primary" style="background:#10b981;color:#fff">🔗 Live Demo</a>
+          </div>
+        </div>
+        <div class="project-preview-wrap" style="background:#0a0912">
+          <div class="preview-browser-bar">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <div class="preview-url"><span class="preview-url-text">ai-reception-seven.vercel.app</span></div>
+          </div>
+          <div class="preview-frame">
+            <iframe src="https://ai-reception-seven.vercel.app/" title="AI Reception Preview" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1190,7 +1220,12 @@ const PROJECTS={
     desc:"A live, working AI support agent for a fictional e-commerce brand, Noor Studio. It handles real customer questions about sizing, shipping, COD, and returns using a loaded knowledge base, a live activity log sidebar, and quick-reply prompts — all powered by the real Claude API, not scripted responses. Built to demonstrate how a custom support agent could replace a 24/7 human support queue for a Pakistani online store.",
     tech:["HTML5","CSS3","Vanilla JS","Claude API","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://supportagent-theta.vercel.app/",primary:true,color:"#8b5cf6"}],
-    features:["Powered by the live Claude API — real AI replies, not scripted","Loaded knowledge base: sizing, shipping/COD, returns, order tracking","Live activity log showing agent's reasoning steps","Quick-reply prompts for common customer questions","Reset-chat flow for demoing multiple conversations"]}
+    features:["Powered by the live Claude API — real AI replies, not scripted","Loaded knowledge base: sizing, shipping/COD, returns, order tracking","Live activity log showing agent's reasoning steps","Quick-reply prompts for common customer questions","Reset-chat flow for demoing multiple conversations"]},
+  aireception:{num:"08 / AI · Business Automation",title:"AI Reception",tagline:"Claude-powered AI receptionist for local businesses",color:"#10b981",
+    desc:"A live, working AI receptionist for small businesses — demoed on a fictional dental clinic, Al-Noor Dental Clinic. It answers real customer questions about timing, pricing, and booking instantly, using a loaded business knowledge base and the real Claude API, not scripted responses. Designed as a productized service: swap the business config in minutes to fit any local business — clinics, salons, restaurants, tuition centers — so a client demo can be customized on the spot.",
+    tech:["HTML5","CSS3","Vanilla JS","Claude API","Vercel"],
+    links:[{label:"🔗 Live Demo",href:"https://ai-reception-seven.vercel.app/",primary:true,color:"#10b981"}],
+    features:["Powered by the live Claude API — real AI replies, not scripted","Editable business config — swap name, hours, pricing, FAQs in minutes","Split before/after comparison showing missed vs. instantly-answered messages","WhatsApp-style chat UI customers already recognize","Built as a reusable client-demo template for a productized AI service","Designed to pitch and close local business clients on the spot"]}
 };
 
 function openModal(key){
@@ -1223,7 +1258,7 @@ function closeModal(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 // Add click handlers to project cards
-const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto','supportagent'];
+const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto','supportagent','aireception'];
 document.querySelectorAll('.project-card').forEach((card,i)=>{
   if(!keys[i])return;
   const hint=document.createElement('div');
