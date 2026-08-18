@@ -4,7 +4,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Muhammad Taha Jaffar — UI/UX Designer & Developer</title>
+<title>Muhammad Taha Jaffar — UI/UX Designer & Frontend Developer</title>
+<meta name="description" content="Portfolio of Muhammad Taha Jaffar — a Software Engineering student specializing in UI/UX design, frontend development, and requirements engineering. Figma prototyping, IEEE SRS/SDD documentation, and deployed web projects."/>
+<meta name="theme-color" content="#080807"/>
+<link rel="canonical" href="https://tahajaffar.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Muhammad Taha Jaffar — UI/UX Designer & Frontend Developer"/>
+<meta property="og:description" content="Software Engineering student specializing in UI/UX design, frontend development, and requirements engineering. View deployed projects, Figma prototypes, and IEEE-standard documentation."/>
+<meta property="og:url" content="https://tahajaffar.vercel.app/"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Muhammad Taha Jaffar — UI/UX Designer & Frontend Developer"/>
+<meta name="twitter:description" content="Software Engineering student specializing in UI/UX design, frontend development, and requirements engineering."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23080807'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23E8C84A'%3ET%3C/text%3E%3C/svg%3E"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -413,6 +424,42 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
   footer{flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
 }
+@media(max-width:480px){
+  .project-preview-mock{flex-direction:column;gap:16px;padding:20px}
+  .preview-phone{display:none}
+  .preview-browser{margin-left:0;width:100%;max-width:100% !important}
+  .hero-h1{letter-spacing:-1.5px}
+  .proj-modal-body{padding:28px 20px 32px}
+}
+
+/* ── ACCESSIBILITY: visible focus + reduced motion ── */
+a:focus-visible,button:focus-visible,.project-card:focus-visible,.flip-card-wrap:focus-visible{
+  outline:2px solid var(--yellow);outline-offset:3px;border-radius:4px;
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+}
+
+/* ── MORE PROJECTS (archive grid) ── */
+.archive-heading{display:flex;align-items:center;gap:16px;margin:60px 0 28px}
+.archive-heading .project-section-title{white-space:nowrap}
+.archive-heading .project-section-line{flex:1;height:1px;background:var(--border)}
+.archive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:720px){.archive-grid{grid-template-columns:1fr}}
+.archive-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+  padding:24px;cursor:pointer;transition:border-color 0.2s,transform 0.15s;
+  position:relative;
+}
+.archive-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.archive-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.archive-card-cat{font-family:var(--font-mono);font-size:0.66rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.archive-card-title{font-family:var(--font-head);font-size:1.05rem;font-weight:800;margin-bottom:6px}
+.archive-card-desc{font-size:0.8rem;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.archive-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.archive-card-foot{display:flex;align-items:center;justify-content:space-between}
+.archive-card-link{font-size:0.74rem;font-weight:600;color:var(--text2);font-family:var(--font-head)}
+.archive-card:hover .archive-card-link{color:var(--yellow)}
 </style>
 </head>
 <body>
@@ -476,7 +523,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
     </div>
     <div class="hero-stats">
       <div class="hstat">
-        <div class="hstat-num" id="statProjects" data-count="7">0</div>
+        <div class="hstat-num" id="statProjects" data-count="8">0</div>
         <div class="hstat-label">Projects</div>
       </div>
       <div class="hstat">
@@ -498,7 +545,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
         <div class="badge-status"><span class="availability-dot"></span>Available for Hire</div>
         <div class="badge-role">UI/UX · Frontend · BA</div>
       </div>
-      <div class="hero-floating-tag tag1">✦ Figma Expert</div>
+      <div class="hero-floating-tag tag1">✦ Figma · UI/UX</div>
       <div class="hero-floating-tag tag2">{ } Vanilla JS</div>
       <div class="hero-floating-tag tag3">📋 IEEE SRS</div>
     </div>
@@ -513,12 +560,12 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
     <div class="about-grid">
       <div class="about-text reveal">
         <h2 class="section-title" style="margin-bottom:24px">I design <em style="color:var(--yellow);font-style:normal">experiences</em>,<br/>not just interfaces.</h2>
-        <p>I'm a 4th-semester Software Engineering student at Air University Multan with a genuine obsession for building products that feel right. I care about the gap between what a user expects and what they get — and I work to close it.</p>
-        <p>My approach is <strong>end-to-end</strong>: I can write the user research, build the wireframes, design the high-fidelity prototype in Figma, and then actually code the frontend and deploy it. Most people do one of these things. I do all of them.</p>
+        <p>I'm a Software Engineering student at Air University Multan with a genuine obsession for building products that feel right. I care about the gap between what a user expects and what they get — and I work to close it.</p>
+        <p>My approach is <strong>end-to-end</strong>: I can write the user research, build the wireframes, design the high-fidelity prototype in Figma, and then actually code the frontend and deploy it — from understanding requirements and designing the user experience to implementing and shipping the final product.</p>
         <p>I've shipped two live projects, authored a full IEEE SRS + SDD for a real platform, and I'm looking for a team where I can grow fast and do meaningful work.</p>
         <div class="about-tags">
-          <span class="about-tag">Air University Multan</span>
-          <span class="about-tag">BSSE · 4th Semester</span>
+          <span class="about-tag">BS Software Engineering</span>
+          <span class="about-tag">Air University Multan · 2024–2028</span>
           <span class="about-tag">CGPA 3.32</span>
           <span class="about-tag">Multan, Pakistan</span>
         </div>
@@ -541,7 +588,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
   <div class="section-inner">
     <div class="section-eyebrow reveal">Work</div>
     <h2 class="section-title reveal">Projects that<br/><em style="color:var(--yellow);font-style:normal">ship.</em></h2>
-    <p class="section-sub reveal">Not mockups. Not wireframes. Real deployed applications solving real problems.</p>
+    <p class="section-sub reveal">Four featured builds — deployed, working, and yours to try. More below.</p>
 
     <!-- SkillSwap -->
     <div class="project-section-divider reveal">
@@ -549,7 +596,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       <div class="project-section-line"></div>
       <div class="project-section-title">Frontend Development</div>
     </div>
-    <div class="project-card reveal accent-yellow">
+    <div class="project-card reveal accent-yellow" data-key="skillswap">
       <div class="project-card-inner">
         <div class="project-info">
           <div class="project-num">01 / Frontend Development</div>
@@ -595,7 +642,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       <div class="project-section-line"></div>
       <div class="project-section-title">Fintech Dashboard</div>
     </div>
-    <div class="project-card reveal accent-mint">
+    <div class="project-card reveal accent-mint" data-key="freelanceflow">
       <div class="project-card-inner reverse">
         <div class="project-info">
           <div class="project-num" style="color:var(--mint)">02 / Fintech Dashboard</div>
@@ -634,7 +681,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       <div class="project-section-line"></div>
       <div class="project-section-title">UI/UX Design · SRS · SDD</div>
     </div>
-    <div class="project-card reveal accent-orange">
+    <div class="project-card reveal accent-orange" data-key="legacyvault">
       <div style="padding:48px">
         <div class="project-num" style="color:var(--orange)">03 / UI/UX Design · SRS · SDD</div>
         <h3 class="project-title" style="margin-bottom:8px">Legacy<em style="color:var(--orange)">Vault</em></h3>
@@ -695,191 +742,21 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
 
-    <!-- Python Project -->
+    <!-- AI Reception -->
     <div class="project-section-divider reveal">
       <div class="project-section-num">04</div>
       <div class="project-section-line"></div>
-      <div class="project-section-title">Python · OOP · CLI</div>
+      <div class="project-section-title">AI · Business Automation</div>
     </div>
-    <div class="project-card reveal">
-      <div style="padding:48px">
-        <div class="project-num">04 / Python · OOP</div>
-        <h3 class="project-title" style="margin-bottom:8px">Student <em style="color:var(--yellow)">Wellness</em> Tracker</h3>
-        <div class="project-tagline" style="margin-bottom:28px">CLI-based wellness management system using OOP and parallel data structures</div>
-        <div class="python-grid">
-          <div>
-            <p style="font-size:0.88rem;color:var(--text2);line-height:1.8;margin-bottom:20px">A console-based wellness tracking system built in Python using pure OOP — multiple classes, parallel list storage, wellness score calculation (0-100), JSON-based data persistence, analytics dashboard, and input validation. No external libraries.</p>
-            <div class="python-features">
-              <div class="py-feature">
-                <div class="py-feature-icon">🏗️</div>
-                <div class="py-feature-text"><strong>OOP Architecture</strong>WellnessEntry, DataStorage, Analytics, Validator — separate class responsibilities</div>
-              </div>
-              <div class="py-feature">
-                <div class="py-feature-icon">📊</div>
-                <div class="py-feature-text"><strong>Wellness Score Algorithm</strong>Calculates 0-100 score from sleep, exercise, mood, stress inputs</div>
-              </div>
-              <div class="py-feature">
-                <div class="py-feature-icon">💾</div>
-                <div class="py-feature-text"><strong>JSON Persistence</strong>Save, load, and manage entries across sessions using file I/O</div>
-              </div>
-              <div class="py-feature">
-                <div class="py-feature-icon">📈</div>
-                <div class="py-feature-text"><strong>Analytics Dashboard</strong>Weekly trends, category breakdown, best/worst days</div>
-              </div>
-            </div>
-            <div style="margin-top:20px;display:flex;gap:10px">
-              <a href="https://github.com/TahaJaffar72" target="_blank" class="project-link ghost">View on GitHub →</a>
-            </div>
-          </div>
-          <!-- Flowchart -->
-          <div>
-            <div style="font-size:0.68rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-weight:700">Program Flow</div>
-            <div class="flowchart">
-              <div class="flow-node start">▶ Program Start</div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node process">Load JSON Data</div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node">Show Main Menu</div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node decision">User Choice?</div>
-              <div class="flow-arrow"></div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%">
-                <div class="flow-node process" style="font-size:0.65rem;padding:8px;text-align:center">Add Entry</div>
-                <div class="flow-node process" style="font-size:0.65rem;padding:8px;text-align:center">View Analytics</div>
-                <div class="flow-node process" style="font-size:0.65rem;padding:8px;text-align:center">Export Data</div>
-              </div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node decision">Calculate Score</div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node process">Save to JSON</div>
-              <div class="flow-arrow"></div>
-              <div class="flow-node start">◼ Exit</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PakHire Project -->
-    <div class="project-section-divider reveal">
-      <div class="project-section-num">05</div>
-      <div class="project-section-line"></div>
-      <div class="project-section-title">Data · Market Intelligence</div>
-    </div>
-    <div class="project-card reveal" style="border-top-color:rgba(59,130,246,0.5) !important">
-      <div class="project-card-inner">
-        <div style="padding:40px 36px">
-          <div class="project-num" style="color:#3b82f6">05 / Market Intelligence</div>
-          <h3 class="project-title">Pak<em style="color:#3b82f6">Hire</em></h3>
-          <div class="project-tagline">Pakistan's first real-time job market intelligence platform</div>
-          <p class="project-desc">PakHire solves a real problem: Pakistani tech grads have zero visibility into actual salaries, in-demand skills, and where companies are hiring. A full market intelligence dashboard with skill demand radar, PKR salary ranges, city hiring heatmaps, live job feed, and YoY skill growth analysis.</p>
-          <div class="tech-tags" style="margin-bottom:20px">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Vanilla JS</span>
-            <span class="tech-tag">anime.js</span>
-            <span class="tech-tag">Chart.js</span>
-            <span class="tech-tag">CountUp.js</span>
-          </div>
-          <div class="project-links">
-            <a href="https://pakhiredashboard-html.vercel.app/" target="_blank" class="project-link primary" style="background:#3b82f6;color:#fff">🔗 Live Demo</a>
-          </div>
-        </div>
-        <div class="project-preview-wrap" style="background:#0a0f1e">
-          <div class="preview-browser-bar">
-            <div class="preview-dots"><span></span><span></span><span></span></div>
-            <div class="preview-url"><span class="preview-url-text">pakhiredashboard-html.vercel.app</span></div>
-          </div>
-          <div class="preview-frame">
-            <iframe src="https://pakhiredashboard-html.vercel.app/" title="PakHire Preview" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-section-divider reveal">
-      <div class="project-section-num">06</div>
-      <div class="project-section-line"></div>
-      <div class="project-section-title">Data · Market Intelligence</div>
-    </div>
-    <div class="project-card reveal" style="border-top-color:rgba(232,74,74,0.5) !important">
-      <div class="project-card-inner">
-        <div style="padding:40px 36px">
-          <div class="project-num" style="color:#e84a4a">06 / Market Intelligence</div>
-          <h3 class="project-title">Pak<em style="color:#e84a4a">Auto</em></h3>
-          <div class="project-tagline">Pakistan car market intelligence — real prices, real data</div>
-          <p class="project-desc">Real prices. Real data. Real Pakistan. PakAuto tracks used car values, fuel prices, and market trends across every major city — no guesswork, just numbers. Live market stats, top-selling car rankings, daily fuel prices, and a city-by-city breakdown of where Pakistan buys, all animated with anime.js and CountUp.js.</p>
-          <div class="tech-tags" style="margin-bottom:20px">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Vanilla JS</span>
-            <span class="tech-tag">anime.js</span>
-            <span class="tech-tag">CountUp.js</span>
-          </div>
-          <div class="project-links">
-            <a href="https://pakauto.vercel.app/" target="_blank" class="project-link primary" style="background:#e84a4a;color:#fff">🔗 Live Demo</a>
-          </div>
-        </div>
-        <div class="project-preview-wrap" style="background:#0a0808">
-          <div class="preview-browser-bar">
-            <div class="preview-dots"><span></span><span></span><span></span></div>
-            <div class="preview-url"><span class="preview-url-text">pakauto.vercel.app</span></div>
-          </div>
-          <div class="preview-frame">
-            <iframe src="https://pakauto.vercel.app/" title="PakAuto Preview" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-section-divider reveal">
-      <div class="project-section-num">07</div>
-      <div class="project-section-line"></div>
-      <div class="project-section-title">AI · Customer Support</div>
-    </div>
-    <div class="project-card reveal" style="border-top-color:rgba(139,92,246,0.5) !important">
-      <div class="project-card-inner">
-        <div style="padding:40px 36px">
-          <div class="project-num" style="color:#8b5cf6">07 / AI · Customer Support</div>
-          <h3 class="project-title">Support<em style="color:#8b5cf6">Agent</em></h3>
-          <div class="project-tagline">Claude-powered AI support agent for e-commerce brands</div>
-          <p class="project-desc">A live, working AI support agent — not a mockup. Built for "Noor Studio," a fictional e-commerce brand, it answers real customer questions about sizing, shipping, COD, and returns using a loaded knowledge base and a live activity log, powered by the real Claude API. Designed to show how a custom support agent could replace a 24/7 human support queue for a Pakistani online store.</p>
-          <div class="tech-tags" style="margin-bottom:20px">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Vanilla JS</span>
-            <span class="tech-tag">Claude API</span>
-            <span class="tech-tag">Vercel</span>
-          </div>
-          <div class="project-links">
-            <a href="https://supportagent-theta.vercel.app/" target="_blank" class="project-link primary" style="background:#8b5cf6;color:#fff">🔗 Live Demo</a>
-          </div>
-        </div>
-        <div class="project-preview-wrap" style="background:#0a0912">
-          <div class="preview-browser-bar">
-            <div class="preview-dots"><span></span><span></span><span></span></div>
-            <div class="preview-url"><span class="preview-url-text">supportagent-theta.vercel.app</span></div>
-          </div>
-          <div class="preview-frame">
-            <iframe src="https://supportagent-theta.vercel.app/" title="SupportAgent Preview" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card reveal" style="border-top-color:rgba(16,185,129,0.5) !important">
+    <div class="project-card reveal" style="border-top-color:rgba(16,185,129,0.5) !important" data-key="aireception">
       <div class="project-card-inner reverse">
         <div style="padding:40px 36px">
-          <div class="project-num" style="color:#10b981">08 / AI · Business Automation</div>
+          <div class="project-num" style="color:#10b981">04 / AI · Business Automation</div>
           <h3 class="project-title">AI <em style="color:#10b981">Reception</em></h3>
-          <div class="project-tagline">Claude-powered AI receptionist for local businesses</div>
-          <p class="project-desc">A live, working AI receptionist built for small businesses — demoed on a fictional dental clinic, "Al-Noor Dental Clinic." It answers real customer questions about timing, pricing, and booking instantly, using a loaded business knowledge base powered by the real Claude API. Built as a productized service — the business config swaps in minutes to fit any local business: clinics, salons, restaurants, tuition centers.</p>
-          <div class="tech-tags" style="margin-bottom:20px">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Vanilla JS</span>
-            <span class="tech-tag">Claude API</span>
-            <span class="tech-tag">Vercel</span>
+          <div class="project-tagline">AI-powered customer communication prototype</div>
+          <p class="project-desc">A working prototype of an AI receptionist for small businesses, demoed on a fictional dental clinic. A customer message flows into a conversation interface, gets handled by an AI response engine loaded with the business's own knowledge (hours, pricing, services), and returns an answer that can guide the customer toward booking. The business config — name, hours, pricing, FAQs — is fully editable, so the same prototype can be adapted to a new business in minutes.</p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">Claude API</span><span class="tech-tag">Vercel</span>
           </div>
           <div class="project-links">
             <a href="https://ai-reception-seven.vercel.app/" target="_blank" class="project-link primary" style="background:#10b981;color:#fff">🔗 Live Demo</a>
@@ -896,6 +773,58 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
         </div>
       </div>
     </div>
+
+    <div class="archive-heading reveal">
+      <div class="project-section-title">More Projects</div>
+      <div class="project-section-line"></div>
+    </div>
+    <div class="archive-grid reveal">
+      <div class="archive-card" data-key="wellness" role="button" tabindex="0" aria-label="Open Student Wellness Tracker project details">
+        <div class="archive-card-top">
+          <div class="archive-card-cat">Python · OOP</div>
+        </div>
+        <div class="archive-card-title">Student Wellness Tracker</div>
+        <div class="archive-card-desc">Console-based wellness tracker built in pure Python OOP — score calculation, JSON persistence, no external libraries.</div>
+        <div class="archive-card-tags">
+          <span class="tech-tag">Python</span><span class="tech-tag">OOP</span><span class="tech-tag">JSON</span>
+        </div>
+        <div class="archive-card-foot"><span class="archive-card-link">View details →</span></div>
+      </div>
+      <div class="archive-card" data-key="pakhire" role="button" tabindex="0" aria-label="Open PakHire project details">
+        <div class="archive-card-top">
+          <div class="archive-card-cat" style="color:#3b82f6">Data · Market Intelligence</div>
+        </div>
+        <div class="archive-card-title">PakHire</div>
+        <div class="archive-card-desc">A market-intelligence dashboard concept for Pakistan's tech job market — skill demand, salary ranges, and city hiring trends, built with sample data.</div>
+        <div class="archive-card-tags">
+          <span class="tech-tag">Vanilla JS</span><span class="tech-tag">Chart.js</span><span class="tech-tag">CountUp.js</span>
+        </div>
+        <div class="archive-card-foot"><span class="archive-card-link">View details →</span></div>
+      </div>
+      <div class="archive-card" data-key="pakauto" role="button" tabindex="0" aria-label="Open PakAuto project details">
+        <div class="archive-card-top">
+          <div class="archive-card-cat" style="color:#e84a4a">Data · Market Intelligence</div>
+        </div>
+        <div class="archive-card-title">PakAuto</div>
+        <div class="archive-card-desc">Used-car and fuel-price market dashboard concept for Pakistan, tracking city-by-city trends with sample data.</div>
+        <div class="archive-card-tags">
+          <span class="tech-tag">Vanilla JS</span><span class="tech-tag">anime.js</span><span class="tech-tag">CountUp.js</span>
+        </div>
+        <div class="archive-card-foot"><span class="archive-card-link">View details →</span></div>
+      </div>
+      <div class="archive-card" data-key="supportagent" role="button" tabindex="0" aria-label="Open SupportAgent project details">
+        <div class="archive-card-top">
+          <div class="archive-card-cat" style="color:#8b5cf6">AI · Customer Support</div>
+        </div>
+        <div class="archive-card-title">SupportAgent</div>
+        <div class="archive-card-desc">A live AI support agent prototype for a fictional e-commerce brand — real Claude API replies, not scripted responses.</div>
+        <div class="archive-card-tags">
+          <span class="tech-tag">Claude API</span><span class="tech-tag">Vanilla JS</span>
+        </div>
+        <div class="archive-card-foot"><span class="archive-card-link">View details →</span></div>
+      </div>
+    </div>
+
 
   </div>
 </section>
@@ -992,7 +921,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
           <div class="flip-back">
             <div class="flip-back-title">Air University Multan</div>
             <div class="flip-back-tags">
-              <span class="flip-back-tag">BSSE 2024-28</span><span class="flip-back-tag">CGPA 3.32</span><span class="flip-back-tag">4th Semester</span><span class="flip-back-tag">HCI</span><span class="flip-back-tag">SRE</span><span class="flip-back-tag">SDA</span>
+              <span class="flip-back-tag">BSSE 2024–2028</span><span class="flip-back-tag">CGPA 3.32</span><span class="flip-back-tag">HCI</span><span class="flip-back-tag">SRE</span><span class="flip-back-tag">SDA</span>
             </div>
           </div>
         </div>
@@ -1006,8 +935,8 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
   <div class="section-inner">
     <div class="contact-inner">
       <div class="section-eyebrow reveal" style="justify-content:center">Contact</div>
-      <h2 class="contact-title reveal">Let's build<br/>something <em>real.</em></h2>
-      <p class="contact-sub reveal">I'm actively looking for UI/UX, Frontend, or Business Analyst internship opportunities. If you're building something and need someone who can design and ship — let's talk.</p>
+      <h2 class="contact-title reveal">Have a product, interface,<br/>or problem worth <em>solving?</em></h2>
+      <p class="contact-sub reveal">Let's talk. I'm actively looking for UI/UX, Frontend, or Business Analyst internship opportunities — and open to freelance work.</p>
       <div class="contact-links reveal">
         <a href="mailto:tahajaffar72@gmail.com" class="contact-link cl-primary">✉ tahajaffar72@gmail.com</a>
         <a href="tel:+923105418988" class="contact-link cl-ghost">📱 0310-5418988</a>
@@ -1031,32 +960,55 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
 </footer>
 
 <script>
-// ── HERO ENTRANCE (anime.js) ──
-anime.timeline({easing:'easeOutExpo'})
-  .add({targets:'.hero-kicker',opacity:[0,1],translateY:[-16,0],duration:600})
-  .add({targets:'.hero-role-tags .role-tag, .hero-role-tags .role-divider',opacity:[0,1],translateY:[16,0],duration:600,delay:anime.stagger(80)},'-=400')
-  .add({targets:'.hero-h1 .line1, .hero-h1 .line2',opacity:[0,1],translateY:[24,0],duration:700,delay:anime.stagger(120)},'-=400')
-  .add({targets:'.hero-sub',opacity:[0,1],translateY:[16,0],duration:600},'-=400')
-  .add({targets:'.hero-actions a, .hero-actions button',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=350')
-  .add({targets:'.hstat',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=300')
-  .add({targets:'.hero-img-wrap',opacity:[0,1],scale:[0.92,1],duration:800},'-=900')
-  .add({targets:'.hero-floating-tag',opacity:[0,1],translateY:[10,0],duration:500,delay:anime.stagger(150)},'-=400');
+// ── SAFETY: verify anime.js actually loaded before depending on it.
+// (Previously, if the CDN failed/was blocked, every element below stayed at
+// its default state — which is how the hero stats got stuck showing "0".
+// Every animated element now has a working non-JS fallback.)
+const animeReady = typeof anime !== 'undefined';
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ── STAT COUNT-UP (anime.js number tween) ──
-document.querySelectorAll('.hstat-num[data-count]').forEach(el=>{
-  const end=parseFloat(el.getAttribute('data-count'));
-  const decimals=(el.getAttribute('data-count').split('.')[1]||'').length;
-  const obj={val:0};
-  anime({
-    targets:obj,val:end,duration:1600,round:decimals?false:1,easing:'easeOutExpo',delay:900,
-    update:()=>{el.textContent=decimals?obj.val.toFixed(decimals):Math.round(obj.val);}
+if (animeReady && !prefersReducedMotion) {
+  // ── HERO ENTRANCE (anime.js) ──
+  anime.timeline({easing:'easeOutExpo'})
+    .add({targets:'.hero-kicker',opacity:[0,1],translateY:[-16,0],duration:600})
+    .add({targets:'.hero-role-tags .role-tag, .hero-role-tags .role-divider',opacity:[0,1],translateY:[16,0],duration:600,delay:anime.stagger(80)},'-=400')
+    .add({targets:'.hero-h1 .line1, .hero-h1 .line2',opacity:[0,1],translateY:[24,0],duration:700,delay:anime.stagger(120)},'-=400')
+    .add({targets:'.hero-sub',opacity:[0,1],translateY:[16,0],duration:600},'-=400')
+    .add({targets:'.hero-actions a, .hero-actions button',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=350')
+    .add({targets:'.hstat',opacity:[0,1],translateY:[16,0],duration:500,delay:anime.stagger(100)},'-=300')
+    .add({targets:'.hero-img-wrap',opacity:[0,1],scale:[0.92,1],duration:800},'-=900')
+    .add({targets:'.hero-floating-tag',opacity:[0,1],translateY:[10,0],duration:500,delay:anime.stagger(150)},'-=400');
+} else {
+  // Fallback: show everything immediately, no animation.
+  document.querySelectorAll('.hero-kicker,.hero-role-tags .role-tag,.hero-role-tags .role-divider,.hero-h1 .line1,.hero-h1 .line2,.hero-sub,.hero-actions a,.hero-actions button,.hstat,.hero-img-wrap,.hero-floating-tag').forEach(el=>{
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
+}
+
+// ── STAT COUNT-UP (with guaranteed fallback — never left at 0) ──
+document.querySelectorAll('.hstat-num[data-count]').forEach(el=>{
+  const raw = el.getAttribute('data-count');
+  const end = parseFloat(raw);
+  const decimals = (raw.split('.')[1]||'').length;
+  const finalText = decimals ? end.toFixed(decimals) : String(Math.round(end));
+
+  if (animeReady && !prefersReducedMotion) {
+    const obj = {val:0};
+    anime({
+      targets:obj,val:end,duration:1600,round:decimals?false:1,easing:'easeOutExpo',delay:900,
+      update:()=>{el.textContent = decimals ? obj.val.toFixed(decimals) : Math.round(obj.val);},
+      complete:()=>{el.textContent = finalText;}
+    });
+  } else {
+    el.textContent = finalText;
+  }
 });
 
-// ── 3D CARD TILT ──
+// ── 3D CARD TILT (skipped when reduced motion is requested) ──
 const heroCard = document.getElementById('heroImgCard');
 const heroWrap = document.getElementById('heroImgWrap');
-if(heroWrap && heroCard){
+if(heroWrap && heroCard && !prefersReducedMotion){
   heroWrap.addEventListener('mousemove', e => {
     const rect = heroWrap.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -1076,8 +1028,9 @@ if(heroWrap && heroCard){
   });
 }
 
-// ── PROJECT CARD TILT ──
+// ── PROJECT CARD TILT (skipped when reduced motion is requested) ──
 document.querySelectorAll('.project-card').forEach(card => {
+  if (prefersReducedMotion) return;
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -1195,37 +1148,37 @@ const PROJECTS={
     tech:["HTML5","CSS3","Vanilla JS","ExchangeRate API","SVG Charts","localStorage"],
     links:[{label:"🔗 Live Demo",href:"https://freelanceflow-dusky.vercel.app/",primary:true,color:"var(--mint)"},{label:"GitHub →",href:"https://github.com/TahaJaffar72/freelanceflow"}],
     features:["Live PKR exchange rate via ExchangeRate API","FBR 2024-25 tax slab integration","SVG income charts — no external libraries","CSV export of earnings history","Platform comparison: Fiverr, Upwork, Toptal","Goal tracker with progress visualization"]},
-  legacyvault:{num:"03 / UI/UX Design · SRS · SDD",title:"LegacyVault",tagline:"Secure digital inheritance management platform",color:"var(--orange)",
-    desc:"Complete end-to-end design and documentation project. Led UI/UX for a digital inheritance platform — user research, wireframes, and 94-screen high-fidelity Figma prototype. Also authored full IEEE SRS (37 FRs, 25 NFRs) and SDD with component diagrams, sequence diagrams, 4+1 View Model, and deployment architecture.",
+  legacyvault:{num:"03 / UI/UX Design · SRS · SDD",title:"LegacyVault",tagline:"A digital asset inheritance platform designed around secure verification and nominee management",color:"var(--orange)",
+    desc:"A complete end-to-end design and documentation project spanning UX, requirements engineering, and software design. Led UI/UX for a digital financial asset inheritance platform — user research, wireframes, and a 94-screen high-fidelity Figma prototype covering nominee management, identity/biometric verification, and automated inheritance workflows. Also authored the full IEEE SRS (37 functional requirements, 25 non-functional requirements) and SDD, with component diagrams, sequence diagrams, the 4+1 View Model, and deployment architecture.",
     tech:["Figma","IEEE SRS","SDD","HCI","4+1 View Model","UML Diagrams","AES-256"],
     links:[{label:"Figma File →",href:"https://www.figma.com/design/TsPKlU74R4WtrtLs2tJxo2/DigitalLegacy?node-id=301-16",primary:true,color:"var(--orange)"}],
-    features:["94 high-fidelity Figma screens","IEEE SRS — 37 functional + 25 non-functional requirements","SDD with 4+1 View Model & component diagrams","Multi-party death verification workflow","AES-256 encryption + JWT auth design","WCAG AA accessibility compliance"],
+    features:["94 high-fidelity Figma screens covering the full inheritance journey","IEEE SRS — 37 functional + 25 non-functional requirements","SDD with 4+1 View Model & component diagrams","Nominee management and multi-party identity verification workflow","AES-256 encryption + JWT auth design","WCAG AA accessibility compliance"],
     proto:true},
-  wellness:{num:"04 / Python · OOP",title:"Student Wellness Tracker",tagline:"CLI wellness system using OOP and parallel data structures",color:"var(--yellow)",
+  wellness:{num:"Python · OOP",title:"Student Wellness Tracker",tagline:"CLI wellness system using OOP and parallel data structures",color:"var(--yellow)",
     desc:"Console-based wellness tracking system in Python using pure OOP. Multiple classes, parallel list storage, wellness score calculation (0-100), JSON persistence, analytics dashboard, and input validation. No external libraries.",
     tech:["Python","OOP","Data Structures","JSON","File I/O","CLI"],
     links:[{label:"GitHub →",href:"https://github.com/TahaJaffar72"}],
     features:["WellnessEntry, DataStorage, Analytics, Validator classes","Score algorithm: sleep + exercise + mood + stress = 0-100","JSON persistence across sessions","Search by mood and stress level","Weekly trend analysis & category breakdown","Input validation with error logging"]},
-  pakhire:{num:"05 / Data · Market Intelligence",title:"PakHire",tagline:"Pakistan's first real-time job market intelligence platform",color:"#3b82f6",
-    desc:"PakHire solves a real problem: Pakistani tech grads have zero visibility into actual salaries, in-demand skills, and where companies are hiring. Built a full market intelligence dashboard with skill demand radar, PKR salary ranges from 1,200+ verified offers, city hiring heatmaps, live job feed, and community testimonials. The platform helps engineers, designers, and grads navigate Pakistan's tech ecosystem with real data — not guesswork.",
+  pakhire:{num:"Data · Market Intelligence",title:"PakHire",tagline:"A concept dashboard for Pakistan's tech job market",color:"#3b82f6",
+    desc:"Pakistani tech grads often have little visibility into actual salaries, in-demand skills, and where companies are hiring. PakHire is a concept dashboard exploring how that data could be presented — skill demand radar, PKR salary range visualization, city hiring heatmaps, and a live job feed layout — built with sample data to demonstrate the interface and information architecture.",
     tech:["HTML5","CSS3","Vanilla JS","anime.js","Chart.js","CountUp.js","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://pakhiredashboard-html.vercel.app/",primary:true,color:"#3b82f6"}],
-    features:["Pakistan job market intelligence — skill demand, salaries, city rankings","PKR salary ranges from 1,200+ verified job offers","Skill demand radar — 2024 vs 2023 YoY growth","City hiring heatmap across Karachi, Lahore, Islamabad, Multan","Live job feed with role/remote/hybrid filters","Animated counters and data visualizations with anime.js + Chart.js"]},
-  pakauto:{num:"06 / Market Intelligence",title:"PakAuto",tagline:"Pakistan car market intelligence — real prices, real data",color:"#e84a4a",
-    desc:"Real prices. Real data. Real Pakistan. PakAuto tracks used car values, fuel prices, and market trends across every major city — no guesswork, just numbers. Built as a live market intelligence dashboard: current market stats, top-selling car rankings with pricing, daily fuel prices, and a city-by-city breakdown of where Pakistan buys — all wrapped in animated counters and moving UI powered by anime.js and CountUp.js.",
+    features:["Dashboard concept for Pakistan's tech job market — skill demand, salaries, city rankings","Skill demand radar visualization","City hiring heatmap layout across Karachi, Lahore, Islamabad, Multan","Live job feed UI with role/remote/hybrid filters","Animated counters and data visualizations with anime.js + Chart.js","Built with sample data to demonstrate the concept and interface"]},
+  pakauto:{num:"Market Intelligence",title:"PakAuto",tagline:"A concept dashboard for Pakistan's used-car market",color:"#e84a4a",
+    desc:"PakAuto is a concept dashboard exploring how used-car values, fuel prices, and city-by-city buying trends across Pakistan could be visualized — current market stats, top-selling car rankings, and daily fuel price tracking, built with sample data to demonstrate the interface and animated data presentation.",
     tech:["HTML5","CSS3","Vanilla JS","anime.js","CountUp.js","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://pakauto.vercel.app/",primary:true,color:"#e84a4a"}],
-    features:["Live Pakistan auto market stats","Top-selling cars with pricing data","Daily fuel price tracker","City-by-city buying trends across Pakistan","Animated counters and moving UI with anime.js + CountUp.js"]},
-  supportagent:{num:"07 / AI · Customer Support",title:"SupportAgent",tagline:"Claude-powered AI support agent for e-commerce brands",color:"#8b5cf6",
+    features:["Concept dashboard for Pakistan's used-car market","Top-selling cars with sample pricing data","Daily fuel price tracker layout","City-by-city buying trend visualization","Animated counters and moving UI with anime.js + CountUp.js","Built with sample data to demonstrate the concept and interface"]},
+  supportagent:{num:"AI · Customer Support",title:"SupportAgent",tagline:"Claude-powered AI support agent for e-commerce brands",color:"#8b5cf6",
     desc:"A live, working AI support agent for a fictional e-commerce brand, Noor Studio. It handles real customer questions about sizing, shipping, COD, and returns using a loaded knowledge base, a live activity log sidebar, and quick-reply prompts — all powered by the real Claude API, not scripted responses. Built to demonstrate how a custom support agent could replace a 24/7 human support queue for a Pakistani online store.",
     tech:["HTML5","CSS3","Vanilla JS","Claude API","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://supportagent-theta.vercel.app/",primary:true,color:"#8b5cf6"}],
     features:["Powered by the live Claude API — real AI replies, not scripted","Loaded knowledge base: sizing, shipping/COD, returns, order tracking","Live activity log showing agent's reasoning steps","Quick-reply prompts for common customer questions","Reset-chat flow for demoing multiple conversations"]},
-  aireception:{num:"08 / AI · Business Automation",title:"AI Reception",tagline:"Claude-powered AI receptionist for local businesses",color:"#10b981",
-    desc:"A live, working AI receptionist for small businesses — demoed on a fictional dental clinic, Al-Noor Dental Clinic. It answers real customer questions about timing, pricing, and booking instantly, using a loaded business knowledge base and the real Claude API, not scripted responses. Designed as a productized service: swap the business config in minutes to fit any local business — clinics, salons, restaurants, tuition centers — so a client demo can be customized on the spot.",
+  aireception:{num:"04 / AI · Business Automation",title:"AI Reception",tagline:"AI-powered customer communication prototype",color:"#10b981",
+    desc:"A working prototype of an AI receptionist for small businesses, demoed on a fictional dental clinic. The flow is straightforward: a customer message goes into a conversation interface, an AI response engine loaded with the business's own knowledge (services, pricing, hours) generates a reply, and the conversation can guide the customer toward booking. The business configuration — name, hours, pricing, FAQs — is fully editable, so the same prototype adapts to a different business in minutes. Want an AI receptionist for your business? This is the working proof of concept.",
     tech:["HTML5","CSS3","Vanilla JS","Claude API","Vercel"],
     links:[{label:"🔗 Live Demo",href:"https://ai-reception-seven.vercel.app/",primary:true,color:"#10b981"}],
-    features:["Powered by the live Claude API — real AI replies, not scripted","Editable business config — swap name, hours, pricing, FAQs in minutes","Split before/after comparison showing missed vs. instantly-answered messages","WhatsApp-style chat UI customers already recognize","Built as a reusable client-demo template for a productized AI service","Designed to pitch and close local business clients on the spot"]}
+    features:["Powered by the live Claude API — real AI replies, not scripted","Conversation interface → AI response engine → business knowledge → booking flow","Editable business configuration — swap name, hours, pricing, FAQs in minutes","Split before/after view showing missed vs. instantly-answered messages","WhatsApp-style chat UI customers already recognize","A reusable prototype template, not a production AI infrastructure deployment"]}
 };
 
 function openModal(key){
@@ -1257,17 +1210,25 @@ function closeModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-// Add click handlers to project cards
-const keys=['skillswap','freelanceflow','legacyvault','wellness','pakhire','pakauto','supportagent','aireception'];
-document.querySelectorAll('.project-card').forEach((card,i)=>{
-  if(!keys[i])return;
+// Add click handlers to project cards (featured + archive) — keyed by data-key,
+// not array position, so reordering cards in the DOM never opens the wrong modal.
+document.querySelectorAll('.project-card[data-key]').forEach(card=>{
+  const key=card.dataset.key;
   const hint=document.createElement('div');
   hint.className='click-hint';
   hint.innerHTML='↗ Click to expand';
   card.appendChild(hint);
   card.addEventListener('click',e=>{
     if(e.target.closest('a')||e.target.closest('button')||e.target.closest('iframe'))return;
-    openModal(keys[i]);
+    openModal(key);
+  });
+});
+document.querySelectorAll('.archive-card[data-key]').forEach(card=>{
+  const key=card.dataset.key;
+  const open=()=>openModal(key);
+  card.addEventListener('click',open);
+  card.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}
   });
 });
 </script>
